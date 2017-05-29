@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partialviews/header.ejs %>
+</head>
+
+<body>
+    <div class="container">
+        <div class="bs-example">
+            <div class="page-header">
+                <h1>Welcome to collaborative White Board </h1>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Join the board</h3>
+                </div>
+                <div class="panel-body">
+                    <div class="col-xs-6">
+                        <form method="post" action="/board">
+                            <label for="username">Enter your name:</label>
+                            <div class="input-group">
+                                <input type="text" name="username" class="form-control">
+                                <span class="input-group-btn">
+                            <button class="btn btn-primary" type="submit">Go!</button>
+                        </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</body>
+
+</html>

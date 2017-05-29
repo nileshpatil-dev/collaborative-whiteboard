@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <% include partialviews/header.ejs %>
+</head>
+<style>
+    canvas {
+        background-color: #c3c3c3;
+        width: 500;
+        height: 500;
+        border: 1px solid blue;
+        cursor: crosshair;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .panel-body-left,
+    .panel-left {
+        float: left;
+        width: 5%;
+    }
+
+    .panel-body-right,
+    .panel-right {
+        float: right;
+        text-align: left;
+        width: 95%;
+    }
+
+    .panel-left {
+        width: 60%;
+    }
+
+    .panel-right {
+        width: 40%;
+    }
+
+    .panel-body-left .btn {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .panel-body-right .btn {
+        margin-right: 10px;
+    }
+
+    .color-panel {
+        margin-top: 10px;
+    }
+
+
+    .panel-body-right .icon-share,
+    .panel-body-right .icon-undo,
+    .panel-body-right .icon-clear {
+        display: block;
+    }
+    
+
+    .panel-body-right .icon-share {
+        background: url('../img/share.png') no-repeat;
+    }
+
+    .panel-body-right .icon-undo {
+        background: url('../img/undo1.png') no-repeat;
+    }
+
+    .panel-body-right .icon-clear {
+        background: url('../img/clear.png') no-repeat;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="bs-example">
+            <div class="page-header">
+                <h1>Welcome
+                    <%= username %>
+                </h1>
+                <small><%= title %></small>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">board</h3>
+                </div>
+                <div class="panel-body">
+                    <div id="adcontainer" class="panel-body-left" style="overflow:hidden;text-align:left;">
+                        <!--<h4 style="padding:0 10px; margin: 1px 0;">Choose pen color</h4>-->
+
+                        <p class="color-panel">
+                            <img src="/img/paint.png" height="30px" width="30px">
+                            <button type="button" onclick="SetStrokeStyle('#DDDDDD')" class="btn"></button>
+                            <button type="button" onclick="SetStrokeStyle('#286090')" class="btn btn-primary"></button>
+                            <button type="button" onclick="SetStrokeStyle('#449D44')" class="btn btn-success"></button>
+                            <button type="button" onclick="SetStrokeStyle('#31B0D5')" class="btn btn-info"></button>
+                            <button type="button" onclick="SetStrokeStyle('#EC971F')" class="btn btn-warning"></button>
+                            <button type="button" onclick="SetStrokeStyle('#C9302C')" class="btn btn-danger"></button>
+                        </p>
+                    </div>
+                    <div class="clearfix panel-body-right">
+                        <div class="panel-left">
+
+                            <canvas id="myCanvas" width="600px" height="400px">
+                                Your browser does not support the canvas element.
+                            </canvas>
+
+                            <div class="text-left">
+                                <button id="share" onclick="Share()" class="btn btn-danger"><span class="icon-share">Share</span></button>
+                                <button id="clearcanvas" onclick="ClearCanvas()" class="btn btn-danger"><span class="icon-clear">Clear Canvas</span></button>
+                                <button id="undocanvas" onclick="UndoCanvas()" class="btn btn-danger"><span class="icon-undo">Undo</span></button>
+                                <input type="radio" name="painteraser" checked="checked" id="paint" value="Paint" onclick="SetContextProperties('paint')">Paint
+                                <input type="radio" name="painteraser" id="eraser" value="Eraser" onclick="SetContextProperties('erase')">Eraser
+                            </div>
+
+
+                        </div>
+                        <div class="panel-right">
+                            <div class="panel panel-danger">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">Connected Users</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <ul id="connectedUsers">
+
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <% include partialviews/scripts.ejs %>
+
+</body>
+
+</html>
