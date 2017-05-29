@@ -104,7 +104,7 @@ io.on('connection', function (socket) {
             });
 
 
-            var undoData = _.last(drawingHistoryItem[0].history)
+            var undoData = _.last(drawingHistoryItem[0].history);
 
             drawingHistoryItem[0].history.splice(-1);
             io.emit('clear-the-canvas-from-server', {});
