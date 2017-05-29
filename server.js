@@ -55,6 +55,10 @@ io.on('connection', function (socket) {
             return item.id !== socket.id;
         });
 
+        if (!connectedUsers || connectedUsers.length === 0) {
+            drawingHistory = [];
+        }
+
         io.emit("user-disconnected", connectedUsers);
     });
 
